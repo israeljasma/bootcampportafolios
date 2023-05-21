@@ -4,7 +4,7 @@ use cvdb;
 
 -- Tabla de role
 CREATE TABLE role (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255),
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP
@@ -16,7 +16,7 @@ CREATE TABLE usuario (
     username VARCHAR(50) UNIQUE,
     email VARCHAR(100) UNIQUE,
     password VARCHAR(100),
-    active tinyint,
+    active BOOLEAN,
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP
 );
@@ -43,7 +43,7 @@ CREATE TABLE perfil (
 
 -- Tabla de usuarios roles
 CREATE TABLE usuarios_roles (
-    idUsuario INT,
+    idUsuario INT AUTO_INCREMENT,
     idRol INT,
     fechaCreacion TIMESTAMP,
     fechaModificacion TIMESTAMP,
@@ -161,3 +161,16 @@ CREATE TABLE intereses (
     idPerfil INT,
     FOREIGN KEY (idPerfil) REFERENCES perfil(id)
 );
+
+-- Datos Tabla de role
+INSERT INTO role (nombre, fechaCreacion, fechaModificacion)
+VALUES ('Administrador', '2023-05-21 10:00:00', '2023-05-21 10:30:00');
+INSERT INTO role (nombre, fechaCreacion, fechaModificacion)
+VALUES ('Cliente', '2023-05-21 10:00:00', '2023-05-21 10:30:00');
+
+-- Datos Tabla de usuario
+INSERT INTO usuario (username, email, password, active, fechaCreacion, fechaModificacion)
+VALUES ('doravan', 'doravan@example.com', '1234', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00');
+
+INSERT INTO usuario (username, email, password, active, fechaCreacion, fechaModificacion)
+VALUES ('pepito', 'pepito@example.com', '4321', true, '2023-05-21 10:00:00', '2023-05-21 10:30:00');
